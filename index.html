@@ -13,7 +13,27 @@
         <p id="urdu-text" style="color: gray;">Ek dafa ka zikr hai, ek choti si pari thi.</p>
     </div>
 
-    <button onclick="alert('Next story coming soon!')">Next Level</button>
+    <button onclick="nextLevel()">Next Level</button>
+
+    <script>
+        const stories = [
+            { en: "Once upon a time, there was a little fairy.", ur: "Ek dafa ka zikr hai, ek choti si pari thi." },
+            { en: "The fairy lived in a beautiful forest.", ur: "Pari ek khoobsurat jungle mein rehti thi." },
+            { en: "She loved to help all the animals.", ur: "Use sab janwaro ki madad karna pasand tha." }
+        ];
+
+        let currentLevel = 0;
+
+        function nextLevel() {
+            currentLevel++;
+            if (currentLevel < stories.length) {
+                document.getElementById('english-text').innerText = stories[currentLevel].en;
+                document.getElementById('urdu-text').innerText = stories[currentLevel].ur;
+            } else {
+                alert("Sabhi levels poore ho gaye!");
+            }
+        }
+    </script>
 
 </body>
 </html>
