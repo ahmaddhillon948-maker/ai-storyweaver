@@ -7,15 +7,16 @@
 <body>
 
     <h1>AI Storyweaver</h1>
-<nav>
-    <button onclick="showCategory('stories')">Stories</button>
-    <button onclick="showCategory('science')">Science</button>
-</nav>
 
-<div id="category-display">
-    <p>Select a category to start learning!</p>
-</div>
-    
+    <nav>
+        <button onclick="showCategory('stories')">Stories</button>
+        <button onclick="showCategory('science')">Science</button>
+    </nav>
+
+    <div id="category-display">
+        <p>Select a category to start learning!</p>
+    </div>
+
     <div id="story-container">
         <p id="english-text">Once upon a time, there was a little fairy.</p>
         <p id="urdu-text" style="color: gray;">Ek dafa ka zikr hai, ek choti si pari thi.</p>
@@ -24,22 +25,28 @@
     <button onclick="nextLevel()">Next Level</button>
 
     <script>
-        const stories = [
-            { en: "Once upon a time, there was a little fairy.", ur: "Ek dafa ka zikr hai, ek choti si pari thi." },
-            { en: "The fairy lived in a beautiful forest.", ur: "Pari ek khoobsurat jungle mein rehti thi." },
-            { en: "She loved to help all the animals.", ur: "Use sab janwaro ki madad karna pasand tha." }
-        ];
+        // Data structure
+        const content = {
+            stories: [
+                { en: "Once upon a time, there was a little fairy.", ur: "Ek dafa ka zikr hai, ek choti si pari thi." },
+                { en: "The fairy lived in a beautiful forest.", ur: "Pari ek khoobsurat jungle mein rehti thi." }
+            ],
+            science: [
+                { en: "Plants need sunlight to grow.", ur: "Paudhon ko badhne ke liye suraj ki roshni chahiye." },
+                { en: "Water is important for life.", ur: "Pani zindagi ke liye zaroori hai." }
+            ]
+        };
 
-        let currentLevel = 0;
+        // Category dikhane ka logic
+        function showCategory(category) {
+            const display = document.getElementById('category-display');
+            const firstItem = content[category][0];
+            display.innerHTML = `<p>${firstItem.en}</p><p style="color: gray;">${firstItem.ur}</p>`;
+        }
 
+        // Next Level logic (yahan hum baad mein update karenge)
         function nextLevel() {
-            currentLevel++;
-            if (currentLevel < stories.length) {
-                document.getElementById('english-text').innerText = stories[currentLevel].en;
-                document.getElementById('urdu-text').innerText = stories[currentLevel].ur;
-            } else {
-                alert("Sabhi levels poore ho gaye!");
-            }
+            alert("Next level coming soon!");
         }
     </script>
 
